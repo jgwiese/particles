@@ -14,3 +14,7 @@ void renderbuffer_init(t_renderbuffer *p_renderbuffer, int width, int height) {
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);
 }
 
+void renderbuffer_destroy(t_renderbuffer *p_renderbuffer) {
+    free(p_renderbuffer);
+}
+

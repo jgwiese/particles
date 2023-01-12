@@ -10,19 +10,21 @@
 
 
 typedef struct {
-    t_renderobject *renderobject;
-    t_mesh *mesh;
-    force_field *force_field;
-    particle *particles;
-    unsigned int size;
+    t_renderobject *p_renderobject;
+    t_mesh *p_mesh;
+    t_force_field *p_force_field;
+    particle *a_particles;
+    unsigned int a_particles_size;
 } t_particle_system;
 
-t_particle_system *particle_system_new(unsigned int size);
-void particle_system_init(t_particle_system *p_particle_system, unsigned int size);
-glmc_vec3 *particle_system_get_positions(t_particle_system *particle_system);
-void particle_system_randomize_positions(t_particle_system *particle_system);
-void particle_system_apply_force_field(t_particle_system *particle_system, force_field *force_field, float time_step);
+t_particle_system *particle_system_new(unsigned int a_particles_size);
+void particle_system_init(t_particle_system *p_particle_system, unsigned int a_particles_size);
+glmc_vec3 *particle_system_get_positions(t_particle_system *p_particle_system);
+void particle_system_randomize_positions(t_particle_system *p_particle_system);
+void particle_system_apply_force_field(t_particle_system *p_particle_system, t_force_field *p_force_field, float time_step);
 void particle_system_update(t_particle_system *p_particle_system, float time_step);
 void particle_system_draw(t_particle_system *p_particle_system, t_program *p_program);
+void particle_system_destroy(t_particle_system *p_particle_system);
 
 #endif // PARTICLE_SYSTEM_H
+

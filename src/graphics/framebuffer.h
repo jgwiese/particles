@@ -23,6 +23,7 @@ void framebuffer_attach_texture(t_framebuffer *p_framebuffer, t_texture *p_textu
 void framebuffer_attach_renderbuffer(t_framebuffer *p_framebuffer, t_renderbuffer *p_renderbuffer);
 void framebuffer_use(t_framebuffer *p_framebuffer);
 t_texture *framebuffer_get_color_attachement(t_framebuffer *p_framebuffer, unsigned int i);
+void framebuffer_destroy(t_framebuffer *p_framebuffer);
 
-#endif /*FRAMEBuFFER_H*/
+#endif // FRAMEBuFFER_H
 

@@ -22,3 +22,10 @@ void program_set_float(t_program *p_program, char *name, float value) {
     glUseProgram(0);
 }
 
+void program_destroy(t_program *p_program) {
+    free(p_program->name);
+    shader_destroy(p_program->vertex_shader);
+    shader_destroy(p_program->fragment_shader);
+    free(p_program);
+}
+

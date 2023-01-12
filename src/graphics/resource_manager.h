@@ -23,5 +23,7 @@ void resource_manager_add_program(t_resource_manager *p_resource_manager, t_prog
 t_program *resource_manager_get_program(t_resource_manager *p_resource_manager, char *name);
 void resource_manager_add_texture(t_resource_manager *p_resource_manager, t_texture *p_texture);
 t_texture *resource_manager_get_texture(t_resource_manager *p_resource_manager, char *name);
+void resource_manager_destroy(t_resource_manager *p_resource_manager);
 
 #endif // RESOURCE_MANAGER_H
+

@@ -14,6 +14,7 @@ typedef struct {
 t_canvas *canvas_new();
 void canvas_init(t_canvas *p_canvas);
 void canvas_draw(t_canvas *p_canvas, t_program *p_program);
+void canvas_destroy(t_canvas *p_canvas);
 
 #endif // CANVAS_H
 

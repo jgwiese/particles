@@ -27,6 +27,7 @@ typedef union {
 } t_face_indices;
 
 void face_indices_init_face_indices(t_face_indices *p_face_indices_target, t_face_indices *p_face_indices_source);
+void face_indices_destroy(t_face_indices *p_face_indices);
 
 
 typedef struct {
@@ -48,8 +49,8 @@ void *_parse_floats(char *str, size_t size);
 void *_parse_line(char *line, enum obj_line_type *type);
 t_obj *obj_new(char *path);
 void obj_init(t_obj *p_obj, char *path);
-void obj_deallocate(t_obj *p_obj);
 void obj_print(t_obj *p_obj);
+void obj_destroy(t_obj *p_obj);
 
 #endif // OBJ_H
 

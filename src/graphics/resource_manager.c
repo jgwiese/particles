@@ -66,3 +66,16 @@ t_texture *resource_manager_get_texture(t_resource_manager *p_resource_manager, 
     return NULL;
 }
 
+void resource_manager_destroy(t_resource_manager *p_resource_manager) {
+    for (unsigned int i = 0; i < p_resource_manager->a_shader_size; i++) {
+        shader_destroy(p_resource_manager->a_shader[i]);
+    }
+    for (unsigned int i = 0; i < p_resource_manager->a_program_size; i++) {
+        program_destroy(p_resource_manager->a_program[i]);
+    }
+    for (unsigned int i = 0; i < p_resource_manager->a_texture_size; i++) {
+        texture_destroy(p_resource_manager->a_texture[i]);
+    }
+    free(p_resource_manager);
+}
+

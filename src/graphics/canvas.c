@@ -26,3 +26,9 @@ void canvas_draw(t_canvas *p_canvas, t_program *p_program) {
     renderobject_draw(p_canvas->p_renderobject, p_program);
 }
 
+void canvas_destroy(t_canvas *p_canvas) {
+    mesh_destroy(p_canvas->p_mesh);
+    renderobject_destroy(p_canvas->p_renderobject);
+    free(p_canvas);
+}
+

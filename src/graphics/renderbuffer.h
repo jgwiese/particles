@@ -11,6 +11,7 @@ typedef struct {
 
 t_renderbuffer *renderbuffer_new(int width, int height);
 void renderbuffer_init(t_renderbuffer *p_renderbuffer, int width, int height);
+void renderbuffer_destroy(t_renderbuffer *p_renderbuffer);
 
 #endif /*RENDERBUFFER_H*/
 

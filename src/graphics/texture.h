@@ -14,6 +14,7 @@ typedef struct {
 t_texture *texture_new(unsigned int width, unsigned int height, char *name, unsigned char *data);
 void texture_init(t_texture *p_texture, unsigned int width, unsigned int height, char *name, unsigned char *data);
 void texture_use(t_texture *p_texture);
+void texture_destroy(t_texture *p_texture);
 
 #endif // TEXTURE_H
 

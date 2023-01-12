@@ -11,6 +11,7 @@ typedef struct {
 
 t_face *face_new(glmc_ivec3 *vertex_indices, glmc_vec3 *normal);
 void face_init(t_face *p_face, glmc_ivec3 *vertex_indices, glmc_vec3 *normal);
+void face_destroy(t_face *p_face);
 
 #endif // FACE_H
 

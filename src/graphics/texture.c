@@ -24,3 +24,8 @@ void texture_use(t_texture *p_texture) {
     glBindTexture(GL_TEXTURE_2D, p_texture->id);
 }
 
+void texture_destroy(t_texture *p_texture) {
+    free(p_texture->name);
+    free(p_texture);
+}
+

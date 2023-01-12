@@ -20,6 +20,7 @@ void renderer_init(t_renderer *p_renderer);
 void renderer_render(t_renderer *p_renderer, t_particle_system *p_particle_system);
 void renderer_add_framebuffer(t_renderer *p_renderer, t_framebuffer *p_framebuffer);
 t_framebuffer *renderer_get_framebuffer(t_renderer *p_renderer, char *name);
+void renderer_destroy(t_renderer *p_renderer);
 
 #endif // RENDERER_H
 

@@ -20,5 +20,6 @@ t_application *application_new(char *name);
 void application_init(t_application *p_application, char *name);
 void application_run(t_application *p_application);
 void application_update(t_application *p_application);
+void application_destroy(t_application *p_application);
 
 #endif // APPLICATION_H

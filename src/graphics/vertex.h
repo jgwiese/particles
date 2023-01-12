@@ -12,6 +12,7 @@ typedef struct {
 
 t_vertex *vertex_new(glmc_vec3 *coordinates, glmc_vec3 *normal, glmc_vec2 *uv);
 void vertex_init(t_vertex *p_vertex, glmc_vec3 *coordinates, glmc_vec3 *normal, glmc_vec2 *uv);
+void vertex_destroy(t_vertex *p_vertex);
 
 #endif // VERTEX_H
 

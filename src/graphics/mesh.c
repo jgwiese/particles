@@ -63,7 +63,6 @@ t_mesh *mesh_new(char *path) {
 void mesh_init(t_mesh *p_mesh, char *path) {
     p_mesh->p_obj = obj_new(path); // TODO later remove p_obj from attributes of p_mesh
     _create_mesh_from_obj(p_mesh, p_mesh->p_obj);
-    //obj_deallocate(p_mesh->p_obj);
 }
 
 void mesh_print(t_mesh *p_mesh) {
@@ -80,5 +79,19 @@ void mesh_print(t_mesh *p_mesh) {
     for (unsigned int i = 0; i < p_mesh->a_indices_size; i++) {
         printf("index: %d\n", p_mesh->a_indices[i]);
     }
+}
+
+void mesh_destroy(t_mesh *p_mesh) {
+    obj_destroy(p_mesh->p_obj);
+    for (unsigned int i = 0; i < p_mesh->a_vertex_size; i++) {
+        vertex_destroy(&p_mesh->a_vertex[i]);
+    }
+    for (unsigned int i = 0; i < p_mesh->a_face_size; i++) {
+        face_destroy(&p_mesh->a_face[i]);
+    }
+    free(p_mesh->a_indices);
+    free(p_mesh->material);
+    free(p_mesh->name);
+    free(p_mesh);
 }
 

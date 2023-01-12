@@ -43,3 +43,10 @@ void application_update(t_application *p_application) {
     renderer_render(p_application->p_renderer, p_application->p_particle_system);
 }
 
+void application_destroy(t_application *p_application) {
+    glfw_window_destroy(p_application->p_window);
+    particle_system_destroy(p_application->p_particle_system);
+    renderer_destroy(p_application->p_renderer);
+    free(p_application);
+}
+

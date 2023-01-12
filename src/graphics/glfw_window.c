@@ -57,11 +57,12 @@ void glfw_window_event(t_glfw_window *p_glfw_window) {
     }
 }
 
-void glfw_window_destroy(t_glfw_window *p_glfw_window) {
-    glfwDestroyWindow(p_glfw_window->p_window);
-}
-
 void glfw_window_update(t_glfw_window *p_glfw_window) {
     glfwSwapBuffers(p_glfw_window->p_window);
+}
+
+void glfw_window_destroy(t_glfw_window *p_glfw_window) {
+    glfwDestroyWindow(p_glfw_window->p_window);
+    free(p_glfw_window);
 }
 

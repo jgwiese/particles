@@ -15,3 +15,9 @@ void vertex_init(t_vertex *p_vertex, glmc_vec3 *coordinates, glmc_vec3 *normal, 
     glmc_vec2_init_vec2(&p_vertex->uv, uv);
 }
 
+void vertex_destroy(t_vertex *p_vertex) {
+    glmc_vec3_destroy(&p_vertex->coordinates);
+    glmc_vec3_destroy(&p_vertex->normal);
+    glmc_vec2_destroy(&p_vertex->uv);
+}
+

@@ -1,4 +1,5 @@
 #include "sdl_window.h"
+#include <SDL2/SDL_video.h>
 
 
 t_sdl_window *sdl_window_new(int width, int height) {
@@ -73,7 +74,9 @@ void sdl_window_update(t_sdl_window *p_sdl_window) {
 }
 
 void sdl_window_destroy(t_sdl_window *p_sdl_window) {
+    SDL_GL_DeleteContext(p_sdl_window->context);
     SDL_DestroyWindow(p_sdl_window->p_window);
     SDL_Quit();
+    free(p_sdl_window);
 }
 

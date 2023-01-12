@@ -40,3 +40,7 @@ t_shader *fragment_shader_new(char *path, char *name) {
     return shader_new(path, GL_FRAGMENT_SHADER, name);
 }
 
+void shader_destroy(t_shader *p_shader) {
+    free(p_shader->name);
+}
+

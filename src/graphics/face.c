@@ -14,3 +14,9 @@ void face_init(t_face *p_face, glmc_ivec3 *vertex_indices, glmc_vec3 *normal) {
     glmc_vec3_init_vec3(&p_face->normal, normal);
 }
 
+void face_destroy(t_face *p_face) {
+    glmc_ivec3_destroy(&p_face->vertex_indices);
+    glmc_vec3_destroy(&p_face->normal);
+    free(p_face);
+}
+

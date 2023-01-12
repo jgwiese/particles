@@ -68,6 +68,12 @@ void face_indices_init_face_indices(t_face_indices *p_face_indices_target, t_fac
     glmc_ivec3_init_ivec3(&p_face_indices_target->v3_indices, &p_face_indices_source->v3_indices);
 }
 
+void face_indices_destroy(t_face_indices *p_face_indices) {
+    glmc_ivec3_destroy(&p_face_indices->v1_indices);
+    glmc_ivec3_destroy(&p_face_indices->v2_indices);
+    glmc_ivec3_destroy(&p_face_indices->v3_indices);
+}
+
 t_obj *obj_new(char *path) {
     FILE *f;
     char *line = NULL;
@@ -129,15 +135,6 @@ t_obj *obj_new(char *path) {
     return p_obj;
 }
 
-void obj_deallocate(t_obj *p_obj) {
-    free(p_obj->a_coordinates);
-    free(p_obj->a_normals);
-    free(p_obj->a_uvs);
-    free(p_obj->a_face_indices);
-    free(p_obj->name);
-    free(p_obj->material);
-}
-
 void obj_print(t_obj *p_obj) {
     printf("obj name: %s\n", p_obj->name);
     printf("material: %s\n", p_obj->material);
@@ -159,5 +156,23 @@ void obj_print(t_obj *p_obj) {
             glmc_ivec3_print(&p_obj->a_face_indices[i].front[j]);
         }
     }
+}
+
+void obj_destroy(t_obj *p_obj) {
+    for (unsigned int i = 0; i < p_obj->a_coordinates_size; i++) {
+        glmc_vec3_destroy(&p_obj->a_coordinates[i]);
+    }
+    for (unsigned int i = 0; i < p_obj->a_normals_size; i++) {
+        glmc_vec3_destroy(&p_obj->a_normals[i]);
+    }
+    for (unsigned int i = 0; i < p_obj->a_uvs_size; i++) {
+        glmc_vec2_destroy(&p_obj->a_uvs[i]);
+    }
+    for (unsigned int i = 0; i < p_obj->a_face_indices_size; i++) {
+        face_indices_destroy(&p_obj->a_face_indices[i]);
+    }
+    free(p_obj->name);
+    free(p_obj->material);
+    free(p_obj);
 }
 

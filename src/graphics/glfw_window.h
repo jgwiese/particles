@@ -13,8 +13,8 @@ typedef struct {
 void key_callback(GLFWwindow *p_window, int key, int scancode, int action, int mods);
 t_glfw_window *glfw_window_new(int width, int height, char *name);
 void glfw_window_event(t_glfw_window *p_glfw_window);
-void glfw_window_destroy(t_glfw_window *p_glfw_window);
 void glfw_window_update(t_glfw_window *p_glfw_window);
+void glfw_window_destroy(t_glfw_window *p_glfw_window);
 
 #endif // GLFW_WINDOW_H
 

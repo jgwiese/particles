@@ -53,3 +53,14 @@ void framebuffer_attach_renderbuffer(t_framebuffer *p_framebuffer, t_renderbuffe
 t_texture *framebuffer_get_color_attachement(t_framebuffer *p_framebuffer, unsigned int i) {
     return p_framebuffer->a_texture[i];
 }
+
+void framebuffer_destroy(t_framebuffer *p_framebuffer) {
+    for (unsigned int i = 0; i < p_framebuffer->a_texture_size; i++) {
+        texture_destroy(p_framebuffer->a_texture[i]);
+    }
+    for (unsigned int i = 0; i < p_framebuffer->a_renderbuffer_size; i++) {
+        renderbuffer_destroy(p_framebuffer->a_renderbuffer[i]);
+    }
+    free(p_framebuffer);
+}
+

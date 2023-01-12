@@ -29,3 +29,11 @@ void particle_print(particle *p_particle) {
     // for now only the position
     glmc_vec3_print(&p_particle->position);
 }
+
+void particle_destroy(particle *p_particle) {
+    glmc_vec3_destroy(&p_particle->position);
+    glmc_vec3_destroy(&p_particle->velocity);
+    glmc_vec3_destroy(&p_particle->acceleration);
+    free(p_particle);
+}
+

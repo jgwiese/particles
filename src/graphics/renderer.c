@@ -191,3 +191,12 @@ t_framebuffer *renderer_get_framebuffer(t_renderer *p_renderer, char *name) {
     return NULL;
 }
 
+void renderer_destroy(t_renderer *p_renderer) {
+    for (unsigned int i = 0; i < p_renderer->a_framebuffer_size; i++) {
+        framebuffer_destroy(p_renderer->a_framebuffer[i]);
+    }
+    canvas_destroy(p_renderer->p_canvas);
+    resource_manager_destroy(p_renderer->p_resource_manager);
+    free(p_renderer);
+}
+
