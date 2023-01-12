@@ -69,9 +69,7 @@ void face_indices_init_face_indices(t_face_indices *p_face_indices_target, t_fac
 }
 
 void face_indices_destroy(t_face_indices *p_face_indices) {
-    glmc_ivec3_destroy(&p_face_indices->v1_indices);
-    glmc_ivec3_destroy(&p_face_indices->v2_indices);
-    glmc_ivec3_destroy(&p_face_indices->v3_indices);
+    free(p_face_indices);
 }
 
 t_obj *obj_new(char *path) {
@@ -102,6 +100,8 @@ t_obj *obj_new(char *path) {
         type = NONE;
         buffer = _parse_line(line, &type);
         if (type == NAME) {
+            //p_obj->name = calloc(strlen((char *) buffer) + 1, sizeof(char));
+            //strcpy(p_obj->name, (char *) buffer);
             p_obj->name = (char *) buffer;
         }
         if (type == COORDINATES) {
@@ -125,6 +125,8 @@ t_obj *obj_new(char *path) {
             p_obj->a_face_indices_size += 1;
         }
         if (type ==  MATERIAL) {
+            //p_obj->material = calloc(strlen((char *) buffer) + 1, sizeof(char));
+            //strcpy(p_obj->material, (char *) buffer);
             p_obj->material = (char *) buffer;
         }
     }
@@ -159,18 +161,10 @@ void obj_print(t_obj *p_obj) {
 }
 
 void obj_destroy(t_obj *p_obj) {
-    for (unsigned int i = 0; i < p_obj->a_coordinates_size; i++) {
-        glmc_vec3_destroy(&p_obj->a_coordinates[i]);
-    }
-    for (unsigned int i = 0; i < p_obj->a_normals_size; i++) {
-        glmc_vec3_destroy(&p_obj->a_normals[i]);
-    }
-    for (unsigned int i = 0; i < p_obj->a_uvs_size; i++) {
-        glmc_vec2_destroy(&p_obj->a_uvs[i]);
-    }
-    for (unsigned int i = 0; i < p_obj->a_face_indices_size; i++) {
-        face_indices_destroy(&p_obj->a_face_indices[i]);
-    }
+    free(p_obj->a_coordinates);
+    free(p_obj->a_normals);
+    free(p_obj->a_uvs);
+    free(p_obj->a_face_indices);
     free(p_obj->name);
     free(p_obj->material);
     free(p_obj);

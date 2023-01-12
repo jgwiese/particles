@@ -11,7 +11,6 @@
 
 typedef struct {
     t_renderobject *p_renderobject;
-    t_mesh *p_mesh;
     t_force_field *p_force_field;
     particle *a_particles;
     unsigned int a_particles_size;

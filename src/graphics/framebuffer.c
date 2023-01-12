@@ -1,6 +1,7 @@
 #include "framebuffer.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 
 t_framebuffer *framebuffer_new(char *name) {
@@ -10,7 +11,9 @@ t_framebuffer *framebuffer_new(char *name) {
 }
 
 void framebuffer_init(t_framebuffer *p_framebuffer, char *name) {
-    p_framebuffer->name = name;
+    p_framebuffer->name = calloc(strlen(name) + 1, sizeof(char));
+    strcpy(p_framebuffer->name, name);
+    //p_framebuffer->name = name;
     glGenFramebuffers(1, &p_framebuffer->id);
     glBindFramebuffer(GL_FRAMEBUFFER, p_framebuffer->id);
     p_framebuffer->a_texture = calloc(16, sizeof(t_texture *));
@@ -55,9 +58,9 @@ t_texture *framebuffer_get_color_attachement(t_framebuffer *p_framebuffer, unsig
 }
 
 void framebuffer_destroy(t_framebuffer *p_framebuffer) {
-    for (unsigned int i = 0; i < p_framebuffer->a_texture_size; i++) {
-        texture_destroy(p_framebuffer->a_texture[i]);
-    }
+    // do not destroy textures, they are managed by resource_manager
+    free(p_framebuffer->name);
+    // TODO make renderbuffer be managed by resource_manager as well
     for (unsigned int i = 0; i < p_framebuffer->a_renderbuffer_size; i++) {
         renderbuffer_destroy(p_framebuffer->a_renderbuffer[i]);
     }

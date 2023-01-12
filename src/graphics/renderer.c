@@ -1,5 +1,6 @@
 #include "renderer.h"
 #include <stdlib.h>
+#include <string.h>
 #include "canvas.h"
 #include "framebuffer.h"
 #include "resource_manager.h"
@@ -184,7 +185,7 @@ void renderer_add_framebuffer(t_renderer *p_renderer, t_framebuffer *p_framebuff
 
 t_framebuffer *renderer_get_framebuffer(t_renderer *p_renderer, char *name) {
     for (unsigned int i = 0; i < p_renderer->a_framebuffer_size; i++) {
-        if (p_renderer->a_framebuffer[i]->name == name) {
+        if (strcmp(p_renderer->a_framebuffer[i]->name, name) == 0) {
             return p_renderer->a_framebuffer[i];
         }
     }
@@ -192,6 +193,7 @@ t_framebuffer *renderer_get_framebuffer(t_renderer *p_renderer, char *name) {
 }
 
 void renderer_destroy(t_renderer *p_renderer) {
+    printf("renderer destroy\n");
     for (unsigned int i = 0; i < p_renderer->a_framebuffer_size; i++) {
         framebuffer_destroy(p_renderer->a_framebuffer[i]);
     }

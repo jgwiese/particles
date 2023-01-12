@@ -1,6 +1,7 @@
 #include "resource_manager.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 
 t_resource_manager *resource_manager_new() {
@@ -25,7 +26,7 @@ void resource_manager_add_shader(t_resource_manager *p_resource_manager, t_shade
 
 t_shader *resource_manager_get_shader(t_resource_manager *p_resource_manager, char *name) {
     for (unsigned int i = 0; i < p_resource_manager->a_shader_size; i++) {
-        if (p_resource_manager->a_shader[i]->name == name) {
+        if (strcmp(p_resource_manager->a_shader[i]->name, name) == 0) {
             return p_resource_manager->a_shader[i];
         }
     }
@@ -42,7 +43,7 @@ void resource_manager_add_program(t_resource_manager *p_resource_manager, t_prog
 
 t_program *resource_manager_get_program(t_resource_manager *p_resource_manager, char *name) {
     for (unsigned int i = 0; i < p_resource_manager->a_program_size; i++) {
-        if (p_resource_manager->a_program[i]->name == name) {
+        if (strcmp(p_resource_manager->a_program[i]->name, name) == 0) {
             return p_resource_manager->a_program[i];
         }
     }
@@ -59,7 +60,7 @@ void resource_manager_add_texture(t_resource_manager *p_resource_manager, t_text
 
 t_texture *resource_manager_get_texture(t_resource_manager *p_resource_manager, char *name) {
     for (unsigned int i = 0; i < p_resource_manager->a_texture_size; i++) {
-        if (p_resource_manager->a_texture[i]->name == name) {
+        if (strcmp(p_resource_manager->a_texture[i]->name, name) == 0) {
             return p_resource_manager->a_texture[i];
         }
     }
@@ -67,6 +68,7 @@ t_texture *resource_manager_get_texture(t_resource_manager *p_resource_manager, 
 }
 
 void resource_manager_destroy(t_resource_manager *p_resource_manager) {
+    printf("resource manager destroy\n");
     for (unsigned int i = 0; i < p_resource_manager->a_shader_size; i++) {
         shader_destroy(p_resource_manager->a_shader[i]);
     }

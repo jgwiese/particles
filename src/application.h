@@ -8,7 +8,7 @@
 
 
 typedef struct {
-    t_glfw_window *p_window;
+    t_glfw_window *p_glfw_window;
     t_particle_system *p_particle_system;
     t_renderer *p_renderer;
     clock_t current_time;

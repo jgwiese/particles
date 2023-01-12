@@ -19,7 +19,6 @@ typedef struct {
 } t_mesh;
 
 void _copy_floats(float *arr1, float *arr2, size_t n);
-void _create_mesh_from_obj(t_mesh *p_mesh, t_obj *p_obj);
 t_mesh *mesh_new(char *path);
 void mesh_init(t_mesh *p_mesh, char *path);
 void mesh_print(t_mesh *p_mesh);

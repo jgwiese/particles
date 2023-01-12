@@ -19,8 +19,8 @@ void particle_system_init(t_particle_system *p_particle_system, unsigned int a_p
     char *meshes_path = strjoin(cwd, "/meshes");
 
     p_particle_system->p_force_field = force_field_new();
-    p_particle_system->p_mesh = mesh_new(strjoin(meshes_path, "/sphere.obj"));
-    p_particle_system->p_renderobject = renderobject_new(p_particle_system->p_mesh, a_particles_size);
+    t_mesh *p_mesh = mesh_new(strjoin(meshes_path, "/sphere.obj"));
+    p_particle_system->p_renderobject = renderobject_new(p_mesh, a_particles_size);
     p_particle_system->a_particles_size = a_particles_size;
     p_particle_system->a_particles = calloc(p_particle_system->a_particles_size, sizeof(particle));
     particle_system_randomize_positions(p_particle_system);
@@ -99,11 +99,8 @@ void particle_system_draw(t_particle_system *p_particle_system, t_program *p_pro
 
 void particle_system_destroy(t_particle_system *p_particle_system) {
     renderobject_destroy(p_particle_system->p_renderobject);
-    mesh_destroy(p_particle_system->p_mesh);
     force_field_destroy(p_particle_system->p_force_field);
-    for (unsigned int i = 0; i < p_particle_system->a_particles_size; i++) {
-        particle_destroy(&p_particle_system->a_particles[i]);
-    }
+    free(p_particle_system->a_particles);
     free(p_particle_system);
 }
 

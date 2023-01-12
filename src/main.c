@@ -1,4 +1,5 @@
 #define _GLFW_WAYLAND
+#include <graphics/glfw_window.h>
 #include <glmc/glmc.h>
 #include "application.h"
 
@@ -9,3 +10,4 @@ int main(int argc, char *argv[]) {
     application_destroy(p_application);
     return 0;
 }
+

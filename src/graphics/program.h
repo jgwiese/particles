@@ -9,8 +9,6 @@
 typedef struct {
     char *name;
     GLuint id;
-    t_shader *vertex_shader;
-    t_shader *fragment_shader;
 } t_program;
 
 t_program *program_new(t_shader *p_shader_vertex, t_shader *p_shader_fragment, char *name);

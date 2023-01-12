@@ -1,5 +1,6 @@
 #include "program.h"
 #include <stdlib.h>
+#include <string.h>
 
 
 t_program *program_new(t_shader *p_shader_vertex, t_shader *p_shader_fragment, char *name) {
@@ -9,7 +10,8 @@ t_program *program_new(t_shader *p_shader_vertex, t_shader *p_shader_fragment, c
 }
 
 void program_init(t_program *p_program, t_shader *p_shader_vertex, t_shader *p_shader_fragment, char *name) {
-    p_program->name = name;
+    p_program->name = calloc(strlen(name) + 1, sizeof(char));
+    strcpy(p_program->name, name);
     p_program->id = glCreateProgram();
     glAttachShader(p_program->id, p_shader_vertex->id);
     glAttachShader(p_program->id, p_shader_fragment->id);
@@ -24,8 +26,6 @@ void program_set_float(t_program *p_program, char *name, float value) {
 
 void program_destroy(t_program *p_program) {
     free(p_program->name);
-    shader_destroy(p_program->vertex_shader);
-    shader_destroy(p_program->fragment_shader);
     free(p_program);
 }
 

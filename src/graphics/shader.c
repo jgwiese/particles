@@ -1,6 +1,7 @@
 #include "shader.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "../io/file.h"
 
 
@@ -11,7 +12,8 @@ t_shader *shader_new(char *path, GLenum shader_type, char *name) {
 }
 
 void shader_init(t_shader *p_shader, char *path, GLenum shader_type, char *name) {
-    p_shader->name = name;
+    p_shader->name = calloc(strlen(name) + 1, sizeof(char));
+    strcpy(p_shader->name, name);
     char *buffer;
     if (parse_file(&buffer, path) == 1) {
         printf("shader file empty\n");

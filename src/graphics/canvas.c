@@ -16,8 +16,8 @@ void canvas_init(t_canvas *p_canvas) {
     char *cwd = get_current_working_directory();
     char *meshes_path = strjoin(cwd, "/meshes");
 
-    p_canvas->p_mesh = mesh_new(strjoin(meshes_path, "/quad.obj"));
-    p_canvas->p_renderobject = renderobject_new(p_canvas->p_mesh, 1);
+    t_mesh *p_mesh = mesh_new(strjoin(meshes_path, "/quad.obj"));
+    p_canvas->p_renderobject = renderobject_new(p_mesh, 1);
 }
 
 void canvas_draw(t_canvas *p_canvas, t_program *p_program) {
@@ -27,7 +27,7 @@ void canvas_draw(t_canvas *p_canvas, t_program *p_program) {
 }
 
 void canvas_destroy(t_canvas *p_canvas) {
-    mesh_destroy(p_canvas->p_mesh);
+    printf("canvas destroy\n");
     renderobject_destroy(p_canvas->p_renderobject);
     free(p_canvas);
 }

@@ -1,4 +1,5 @@
 #include "renderobject.h"
+#include <glad/glad.h>
 #include <stdlib.h>
 #include <string.h>
 #include "vertex.h"
@@ -58,15 +59,18 @@ void renderobject_draw(t_renderobject *p_renderobject, t_program *p_program) {
     glBindVertexArray(p_renderobject->vao);
     glBindBuffer(GL_ARRAY_BUFFER, p_renderobject->vbo_instances);
     glDrawElementsInstanced(GL_TRIANGLES, p_renderobject->p_mesh->a_indices_size, GL_UNSIGNED_INT, 0, p_renderobject->a_offsets_size);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
     glUseProgram(0);
 }
 
 void renderobject_destroy(t_renderobject *p_renderobject) {
+    //glDeleteBuffers(1, &p_renderobject->vbo_instances); // TODO why not working?
+    //glDeleteBuffers(1, &p_renderobject->ibo);
+    //glDeleteBuffers(1, &p_renderobject->vbo);
+    //glDeleteVertexArrays(1, &p_renderobject->vao);
     mesh_destroy(p_renderobject->p_mesh);
-    for (unsigned int i = 0; i < p_renderobject->a_offsets_size; i++) {
-        glmc_vec3_destroy(&p_renderobject->a_offsets[i]);
-    }
+    free(p_renderobject->a_offsets);
     free(p_renderobject);
 }
 

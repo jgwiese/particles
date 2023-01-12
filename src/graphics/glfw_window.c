@@ -1,4 +1,5 @@
 #include "glfw_window.h"
+#include <GLFW/glfw3.h>
 #include <stdio.h>
 #include <stdlib.h>
 #define STB_IMAGE_WRITE_IMPLEMENTATION
@@ -63,6 +64,7 @@ void glfw_window_update(t_glfw_window *p_glfw_window) {
 
 void glfw_window_destroy(t_glfw_window *p_glfw_window) {
     glfwDestroyWindow(p_glfw_window->p_window);
-    free(p_glfw_window);
+    glfwTerminate();
+    //free(p_glfw_window); // TODO why not working?
 }
 
