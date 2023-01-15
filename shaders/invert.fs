@@ -11,5 +11,6 @@ void main()
 {
     vec4 image_00 = texture(texture_00, uv);
     output_00 = vec4(1.0 - image_00.rgb, 1.0);
+    output_00 = vec4(image_00.rgb, 1.0);
 }
 
