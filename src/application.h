@@ -1,10 +1,10 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include <time.h>
 #include "graphics/glfw_window.h"
-#include "graphics/renderer.h"
+#include "renderer/renderer.h"
 #include "physics/particle_system.h"
+#include <time.h>
 
 
 typedef struct {

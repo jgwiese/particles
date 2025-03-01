@@ -1,9 +1,9 @@
 #include "application.h"
+#include "physics/force_field.h"
+#include "physics/particle_system.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include "physics/force_field.h"
-#include "physics/particle_system.h"
 
 
 t_application *application_new(char *name) {
@@ -14,7 +14,7 @@ t_application *application_new(char *name) {
 
 void application_init(t_application *p_application, char *name) {
     p_application->p_glfw_window = glfw_window_new(1024, 1024, name);
-    p_application->p_particle_system = particle_system_new(16);
+    p_application->p_particle_system = particle_system_new(512);
     p_application->p_renderer = renderer_new();
     p_application->last_time = clock();
     p_application->current_time = clock();
