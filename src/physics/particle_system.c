@@ -1,9 +1,9 @@
-#include "particle_system.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
 #include <math.h>
+#include "particle_system.h"
 #include "../io/string_mod.h"
 #include "../io/file.h"
 
@@ -53,7 +53,7 @@ void particle_system_apply_force_field(t_particle_system *p_particle_system, t_f
         glmc_vec3_init(&random_force, 0.0, 0.0, 0.0);
         glmc_vec3_init(&centering_force, 0.0, 0.0, 0.0);
         //force_field_random_custom(p_force_field, &random_force);
-        force_field_centering(p_force_field, &centering_force, &p1->position);
+        //force_field_centering(p_force_field, &centering_force, &p1->position);
         force = 0.0;
 
         for (int j = 0; j < p_particle_system->a_particles_size; j++) {
@@ -63,8 +63,8 @@ void particle_system_apply_force_field(t_particle_system *p_particle_system, t_f
                 glmc_vec3_init(&gravity_force, 0.0, 0.0, 0.0);
                 glmc_vec3_subtract(&p2->position, &p1->position, &gravity_force);
                 distance = glmc_vec3_norm(&gravity_force);
-                //force = force_field_gravity(p_force_field, p1->mass, p2->mass, distance);
-                force = force_field_custom(p_force_field, p1->mass, p2->mass, distance);
+                force = force_field_gravity(p_force_field, p1->mass, p2->mass, distance);
+                //force = force_field_custom(p_force_field, p1->mass, p2->mass, distance);
                
                 // now unit vector
                 glmc_vec3_divide(&gravity_force, distance, &gravity_force);
@@ -81,6 +81,7 @@ void particle_system_apply_force_field(t_particle_system *p_particle_system, t_f
     }
     for (int i = 0; i < p_particle_system->a_particles_size; i++) {
         p1 = &p_particle_system->a_particles[i];
+        // TODO did i forgot to multiply velocity by time here?
         glmc_vec3_add(&p1->position, &p1->velocity, &p1->position);
     }
 }
