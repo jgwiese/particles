@@ -1,6 +1,5 @@
+#define GLFW_INCLUDE_NONE 
 #define _GLFW_WAYLAND
-#include <graphics/glfw_window.h>
-#include <glmc/glmc.h>
 #include "application.h"
 
 
