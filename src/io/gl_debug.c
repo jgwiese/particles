@@ -1,6 +1,5 @@
 #include "gl_debug.h"
-#include "glad/glad.h"
-#include <GLFW/glfw3.h>
+#include "gl.h"
 #include <stdio.h>
 
 
