@@ -1,8 +1,7 @@
 #ifndef RENDERBUFFER_H
 #define RENDERBUFFER_H
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include "gl.h"
 
 
 typedef struct {

@@ -1,8 +1,8 @@
 #include "renderobject.h"
-#include <glad/glad.h>
+#include "vertex.h"
+#include "gl.h"
 #include <stdlib.h>
 #include <string.h>
-#include "vertex.h"
 
 
 t_renderobject *renderobject_new(t_mesh *p_mesh, unsigned int a_offsets_size) {

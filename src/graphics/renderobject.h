@@ -1,11 +1,10 @@
 #ifndef RENDEROBJECT_H
 #define RENDEROBJECT_H
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include <glmc/glmc.h>
 #include "mesh.h"
 #include "program.h"
+#include "gl.h"
+#include <glmc/glmc.h>
 
 
 typedef struct {
