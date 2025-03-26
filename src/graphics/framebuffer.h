@@ -1,10 +1,9 @@
 #ifndef FRAMEBUFFER_H
 #define FRAMEBUFFER_H
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include "renderbuffer.h"
 #include "texture.h"
+#include "gl.h"
 
 
 typedef struct {
