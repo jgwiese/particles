@@ -1,8 +1,8 @@
 #include "shader.h"
+#include "../io/file.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../io/file.h"
 
 
 t_shader *shader_new(char *path, GLenum shader_type, char *name) {

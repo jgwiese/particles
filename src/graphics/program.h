@@ -1,9 +1,8 @@
 #ifndef PROGRAM_H
 #define PROGRAM_H
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include "shader.h"
+#include "gl.h"
 
 
 typedef struct {
