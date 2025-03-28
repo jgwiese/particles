@@ -1,9 +1,9 @@
 #include "canvas.h"
-#include <glmc/glmc.h>
-#include <stdlib.h>
+#include "shader.h"
 #include "../io/string_mod.h"
 #include "../io/file.h"
-#include "shader.h"
+#include <glmc/glmc.h>
+#include <stdlib.h>
 
 
 t_canvas *canvas_new() {
