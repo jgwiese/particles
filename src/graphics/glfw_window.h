@@ -1,7 +1,7 @@
 #ifndef GLFW_WINDOW_H
 #define GLFW_WINDOW_H
 
-#include <glad/glad.h>
+#include "gl.h"
 #include <GLFW/glfw3.h>
 
 

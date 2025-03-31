@@ -1,11 +1,11 @@
 #include "glfw_window.h"
-#include <GLFW/glfw3.h>
-#include <stdio.h>
-#include <stdlib.h>
-#define STB_IMAGE_WRITE_IMPLEMENTATION
-#include <stb_image/stb_image_write.h>
 #include "../io/string_mod.h"
 #include "../io/file.h"
+#include "gl.h"
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include <stb_image/stb_image_write.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 
 void key_callback(GLFWwindow *p_window, int key, int scancode, int action, int mods) {
