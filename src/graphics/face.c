@@ -1,6 +1,6 @@
 #include "face.h"
-#include <stdlib.h>
 #include "vertex.h"
+#include <stdlib.h>
 
 
 t_face *face_new(glmc_ivec3 *vertex_indices, glmc_vec3 *normal) {
