@@ -1,11 +1,11 @@
 #ifndef OBJ_H
 #define OBJ_H
 
-#include <stddef.h>
-#include <stdio.h>
-#include <glmc/glmc.h>
 #include "vertex.h"
 #include "face.h"
+#include <glmc/glmc.h>
+#include <stddef.h>
+#include <stdio.h>
 
 
 enum obj_line_type {
